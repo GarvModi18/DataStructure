@@ -123,7 +123,7 @@ void deleteAtIndex() {
         for (int i = 0; i < index - 1 && current != nullptr; ++i) {
             current = current->next;
         }//element 3: 0 1 2 //delete 2
-        //curr=1 1->next=2,NULL , cur=1,cur->next=NULL
+        //curr=1 1->next=2
         //temp=2 2->next=NULL
         if (current != nullptr && current->next != nullptr) {
             Node* temp = current->next;
