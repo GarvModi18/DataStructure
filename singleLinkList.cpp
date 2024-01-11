@@ -8,7 +8,7 @@ public:
     Node* next;
 
     // Default constructor
-    Node() : data(0), next(nullptr) {}
+   // Node() : data(0), next(nullptr) {}
 };
 
 Node* start = nullptr;
@@ -37,6 +37,7 @@ void insertAtEnd() {
 
     Node* newNode = new Node();
     newNode->data = value;
+    newNode->next=NULL;
 
     if (start == nullptr) {
         start = rear = newNode;
@@ -57,10 +58,13 @@ void insertAtIndex() {
     if (index == 0) {
         insertAtStart();
     } else {
+        /*if(index==size){
+            insertAtEnd();
+        }*/
         Node* newNode = new Node();
         newNode->data = value;
-
-        Node* current = start;
+        newNode->next=NULL;
+        Node* current = start;//index =2, i=0,1,     1
         for (int i = 0; i < index - 1 && current != nullptr; ++i) {
             current = current->next;
         }
@@ -92,18 +96,19 @@ void deleteAtEnd() {
 
     if (start->next == nullptr) {
         delete start;
-        start = rear = nullptr;
+        start = rear = nullptr;//NULL
         return;
     }
+    else{
+        Node* current = start;
+        while (current->next != rear) {
+            current = current->next;
+        }
 
-    Node* current = start;
-    while (current->next != rear) {
-        current = current->next;
+        delete rear;
+        rear = current;
+        rear->next = nullptr;
     }
-
-    delete rear;
-    rear = current;
-    rear->next = nullptr;
 }
 
 void deleteAtIndex() {
@@ -114,13 +119,15 @@ void deleteAtIndex() {
     if (index == 0) {
         deleteAtStart();
     } else {
-        Node* current = start;
+        Node* current = start;//2 0 1 2nd last 
         for (int i = 0; i < index - 1 && current != nullptr; ++i) {
             current = current->next;
-        }
+        }//element 3: 0 1 2 //delete 2
+        //curr=1 1->next=2,NULL , cur=1,cur->next=NULL
+        //temp=2 2->next=NULL
         if (current != nullptr && current->next != nullptr) {
             Node* temp = current->next;
-            current->next = current->next->next;
+            current->next = temp->next;
             delete temp;
         } else {
             cout << "Invalid index." << endl;
@@ -162,7 +169,7 @@ void createList() {
 
     while (value!=-1) {
 
-        Node *newnode=new Node();        
+        Node *newnode=new Node();         
         newnode->data=value;
         newnode->next=NULL;
         if(start==NULL){
