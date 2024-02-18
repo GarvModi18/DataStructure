@@ -67,7 +67,7 @@ void insertAtIndex() {
         Node* current = start;//index =2, i=0,1,     1
         for (int i = 0; i < index - 1 && current != nullptr; ++i) {
             current = current->next;
-        }
+        }//0 1 2 3 , 2 , 0 1 new 3 4
         if (current != nullptr) {
             newNode->next = current->next;
             current->next = newNode;
@@ -119,19 +119,20 @@ void deleteAtIndex() {
     if (index == 0) {
         deleteAtStart();
     } else {
-        Node* current = start;//2 0 1 2nd last 
-        for (int i = 0; i < index - 1 && current != nullptr; ++i) {
-            current = current->next;
-        }//element 3: 0 1 2 //delete 2
-        //curr=1 1->next=2
-        //temp=2 2->next=NULL
-        if (current != nullptr && current->next != nullptr) {
-            Node* temp = current->next;
-            current->next = temp->next;
-            delete temp;
-        } else {
-            cout << "Invalid index." << endl;
-        }
+            Node* current = start;//2 0 1 2nd last 
+            for (int i = 0; i < index - 1 && current != nullptr; ++i) {
+                current = current->next;
+            }//element 3: 0 1 2 //delete 2
+            //curr=1 1->next=2
+            //temp=2 2->next=NULL
+            if (current != nullptr && current->next != nullptr) {
+                Node* temp = current->next;
+                current->next = temp->next;
+                delete temp;
+            } 
+            else {
+                cout << "Invalid index." << endl;
+            }
     }
 }
 

@@ -9,7 +9,7 @@ public:
     Node* prev;
 
     // Default constructor
-    Node() : data(0), next(nullptr), prev(nullptr) {}
+   // Node() : data(0), next(nullptr), prev(nullptr) {}
 };
 
 Node* start = nullptr;
@@ -25,10 +25,12 @@ void insertAtStart() {
 
     if (start == nullptr) {
         start = rear = newNode;
+        start->prev=start->next=nullptr;
     } else {
         newNode->next = start;
         start->prev = newNode;
         start = newNode;
+        newNode->prev=nullptr;
     }
 }
 
@@ -66,7 +68,7 @@ void insertAtIndex() {
         Node* current = start;
         for (int i = 0; i < index - 1 && current != nullptr; ++i) {
             current = current->next;
-        }
+        }// 0 1 new 2 3 4 
         if (current != nullptr) {
             newNode->next = current->next;
             newNode->prev = current;
