@@ -16,8 +16,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/garv modi/Documents/study/Data Structure",
-      "program": "c:/Users/garv modi/Documents/study/Data Structure/build/Debug/outDebug",
+      "cwd": "c:/Users/garv modi/Documents/Practicals/Data Structure",
+      "program": "c:/Users/garv modi/Documents/Practicals/Data Structure/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
