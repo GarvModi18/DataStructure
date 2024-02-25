@@ -1,56 +1,72 @@
+//LINEAR QUEUE USING LINK LIST
 #include <iostream>
 using namespace std;
-int queue[20],size=20;
-int head=-1,rear=-1;
+class node {
+public:
+    int data;
+    node *next;
+};
+node *head=NULL,*rear=NULL;
+
 void insert(){
     int num;
-    cout<<"Enter data to be enterd\n";
+    cout<<"Enter data tobe entered\n";
     cin>>num;
-    
-    if(rear==size-1){
-        cout<<"Queue Overflow!!\n";
-    }
-    else if(head==-1 && rear==-1){
-        head=rear=0;
-        queue[rear]=num;
+
+    node *newnode=new node();
+    newnode->data=num;
+
+    if(head==NULL && rear==NULL){
+        head=rear=newnode;
+        newnode->next=NULL;
     }
     else{
-        rear++;
-        queue[rear]=num;
+        rear->next=newnode;
+        newnode->next=NULL;
+        rear=newnode;
     }
 
 }
 void remove(){
-    if(head==-1 || head>rear){
+
+    if(head==NULL || rear==NULL){
         cout<<"Queue Underflow!!\n";
     }
     else{
-        cout<<"Removed Element : "<<queue[head]<<endl;
-        head++;
+        cout<<"Removed Element : "<<head->data<<endl;
+        node *ptr=head;
+        head=head->next;
+        free(ptr);
     }
+
 }
 void peek(){
-    cout<<"Head Element : "<<queue[head]<<endl;
+     if(head==NULL || rear==NULL){
+        cout<<"Queue Underflow!!\n";
+    }
+    else{
+     cout<<"Head Element : "<<head->data<<endl;
+
+    }
 }
 void display(){
 
-    int counter=head;
-
-    if(head==-1 || head>rear){
+    if(head==NULL || rear==NULL){
         cout<<"Queue Underflow!!\n";
     }
     else{
-
-        while(counter<=rear){
-        cout<<" "<<queue[counter]<<" ";
-        counter++;
+        node *ptr=head;
+        while(ptr!=NULL){
+            cout<<" "<<ptr->data<<" ";
+            ptr=ptr->next;
         }
-        cout<<endl;
+    cout<<endl;    
     }
-   
+    
 }
 int main(){
 
+    
 int choice;
 
     do{
@@ -86,5 +102,4 @@ int choice;
     }while(choice!=5);
 
     return 0;
-
 }

@@ -1,5 +1,6 @@
 #include <iostream>
 using namespace std;
+//INCOMPLETE INSERT DELETE ALL OPERATIONS 
 class node{
 public: 
     int data;
