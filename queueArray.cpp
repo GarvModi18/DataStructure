@@ -10,7 +10,7 @@ void Enqueue(){
     if(rear==size-1){
         cout<<"Queue Overflow!!\n";
     }
-    else if(head==-1 && rear==-1){
+    else if(head==-1 && rear==-1){//When Empty
         head=rear=0;
         queue[rear]=num;
     }
@@ -30,7 +30,12 @@ void Dequeue(){
     }
 }
 void peek(){
-    cout<<"Head Element : "<<queue[head]<<endl;
+      if(head==-1 || head>rear){
+        cout<<"Queue Underflow!!\n";
+    }
+    else{
+         cout<<"Head Element : "<<queue[head]<<endl;
+    }
 }
 void display(){
 

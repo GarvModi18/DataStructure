@@ -49,7 +49,13 @@ void Dequeue(){//From Front
 
 }
 void Peek(){
-    cout<<"\nHead Element : "<<queue[front]<<endl;
+    
+    if(front==-1 || rear==-1){
+        cout<<"Queue Underflow!!\n";
+    }
+    else{
+        cout<<"\nHead Element : "<<queue[front]<<endl;
+    }
 }
 void Display(){
 
@@ -71,7 +77,7 @@ void Display(){
         int i=front;
 
         cout<<"---------Queue---------\n";
-        while(i<=MAX-1){//Elements : Front-End(index Max-1)
+        while(i<=MAX-1){//Elements : Front-End(Last index Max-1)
             cout<<" "<<queue[i]<<" ";
             i++;
         }  
@@ -97,6 +103,7 @@ int main(){
 
     do{
         cout<<"------Menu------\n";
+        cout<<"Front : "<<front<<"\nRear : "<<rear<<endl;
         cout<<"   1.Enqueue\n   2.Dequeue\n   3.PEEK\n   4.DISPLAY\n   5.EXIT\n";
         cin>>choice;
         switch (choice)
