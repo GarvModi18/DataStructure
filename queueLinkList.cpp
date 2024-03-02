@@ -8,7 +8,7 @@ public:
 };
 node *head=NULL,*rear=NULL;
 
-void insert(){
+void Enqueue(){
     int num;
     cout<<"Enter data tobe entered\n";
     cin>>num;
@@ -27,7 +27,7 @@ void insert(){
     }
 
 }
-void remove(){
+void Dequeue(){
 
     if(head==NULL || rear==NULL){
         cout<<"Queue Underflow!!\n";
@@ -71,16 +71,16 @@ int choice;
 
     do{
         cout<<"------Menu------\n";
-        cout<<"    1.Insert\n    2.Remove\n    3.PEEK\n    4.DISPLAY\n    5.EXIT\n";
+        cout<<"    1.Enqueue\n    2.Dequeue\n    3.PEEK\n    4.DISPLAY\n    5.EXIT\n";
         cin>>choice;
         switch (choice)
         {
         case 1:
-            insert();
+            Enqueue();
             break;
         
         case 2:
-            remove();
+            Dequeue();
             break;
 
         case 3:
