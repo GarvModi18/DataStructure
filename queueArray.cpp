@@ -7,7 +7,7 @@ void Enqueue(){
     cout<<"Enter data to be enterd\n";
     cin>>num;
     
-    if(rear==size-1){
+    if(rear==size-1 || head>rear){
         cout<<"Queue Overflow!!\n";
     }
     else if(head==-1 && rear==-1){//When Empty

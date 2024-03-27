@@ -91,23 +91,24 @@ void deleteAtStart() {
 void deleteAtEnd() {
     if (start == nullptr) {
         cout << "List is empty. Nothing to delete." << endl;
-        return;
+        
     }
 
-    if (start->next == nullptr) {
+    else if (start->next == nullptr) {
         delete start;
         start = rear = nullptr;//NULL
-        return;
     }
     else{
-        Node* current = start;
-        while (current->next != rear) {
-            current = current->next;
+        Node *ptr=start;
+        Node *preptr=NULL;
+        while(ptr->next!=NULL){
+            preptr=ptr;
+            ptr=ptr->next;
         }
+        cout<<"Delete Node : "<<ptr->data<<endl;
+        preptr->next=NULL;
+        free(ptr);
 
-        delete rear;
-        rear = current;
-        rear->next = nullptr;
     }
 }
 
@@ -119,20 +120,27 @@ void deleteAtIndex() {
     if (index == 0) {
         deleteAtStart();
     } else {
-            Node* current = start;//2 0 1 2nd last 
-            for (int i = 0; i < index - 1 && current != nullptr; ++i) {
-                current = current->next;
-            }//element 3: 0 1 2 //delete 2
-            //curr=1 1->next=2
-            //temp=2 2->next=NULL
-            if (current != nullptr && current->next != nullptr) {
-                Node* temp = current->next;
-                current->next = temp->next;
-                delete temp;
-            } 
-            else {
-                cout << "Invalid index." << endl;
+           Node* ptr=start;
+           Node *preptr=nullptr;
+            int i=0;
+           while(i!=index && ptr!=NULL){
+            preptr=ptr;
+            ptr=ptr->next;
+            i++;
+           }
+           if(ptr==NULL){
+            cout<<"Invalid Index\n";
+           }else{
+            cout<<"Deleted Node : "<<ptr->data<<endl;
+            if(ptr->next!=NULL){
+                preptr->next=ptr->next;
             }
+            else{
+                preptr->next=NULL;
+            }
+            free(ptr);
+
+           }
     }
 }
 
